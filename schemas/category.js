@@ -2,13 +2,8 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var user = new Schema({
-    username:String,
-    password:String,
-    isAdmin:{
-        type:Boolean,
-        default:false
-    }
+var category = new Schema({
+    name:String
 });
 
-module.exports = user;
+module.exports = category;

@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block main %}
+<link rel="stylesheet" href="../../public/css/admin/userIndex.css">
+
+<span class="layui-breadcrumb">
+  <a href="/admin">管理首页</a>
+  <a><cite>用户列表</cite></a>
+</span>
+<table id="userList" lay-filter="test"></table>
+<script type="text/html" id="toolBar">
+    <a class="layui-btn layui-btn-sm" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+{%endblock%}
+{% block js %}
+<script src="/public/js/admin/userIndex.js"></script>
+{% endblock %}
