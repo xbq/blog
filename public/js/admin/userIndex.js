@@ -5,7 +5,7 @@ layui.use('table', function(){
     table.render({
         elem: '#userList'
         ,height: 600
-        ,url: '/admin/user/manage' //数据接口
+        ,url: '/admin/user/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
             {field: '_id', title: 'ID',  sort: true, width:300, fixed: 'left'}
@@ -17,5 +17,7 @@ layui.use('table', function(){
         limits:[1,10,20,50,100],
         limit:20
     });
+
+
 
 });

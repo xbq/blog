@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var categorySchema = require('../schemas/user');
+var categorySchema = require('../schemas/category');
 /*
 name, schema, collection, skipInit
 * 第一个参数为model的name

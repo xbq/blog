@@ -5,9 +5,12 @@
 
 <span class="layui-breadcrumb">
   <a href="/admin">管理首页</a>
-  <a><cite>用户列表</cite></a>
+  <a><cite>分类列表</cite></a>
 </span>
-<table id="userList" lay-filter="test"></table>
+<button class="layui-btn" id="addCategory">
+    <i class="layui-icon">&#xe608;</i> 添加
+</button>
+<table id="categoryList" lay-filter="test"></table>
 <script type="text/html" id="toolBar">
     <a class="layui-btn layui-btn-sm" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
@@ -15,5 +18,5 @@
 </script>
 {%endblock%}
 {% block js %}
-<script src="/public/js/admin/userIndex.js"></script>
+<script src="/public/js/admin/category.js"></script>
 {% endblock %}
