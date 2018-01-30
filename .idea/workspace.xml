@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b12116ad-86fd-4c09-b869-0b6c53751faf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/WiredTiger.wt" afterPath="$PROJECT_DIR$/db/WiredTiger.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/collection-11-6903427989205871858.wt" afterPath="$PROJECT_DIR$/db/collection-11-6903427989205871858.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/collection-2-6903427989205871858.wt" afterPath="$PROJECT_DIR$/db/collection-2-6903427989205871858.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/collection-6-6903427989205871858.wt" afterPath="$PROJECT_DIR$/db/collection-6-6903427989205871858.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/index-3-6903427989205871858.wt" afterPath="$PROJECT_DIR$/db/index-3-6903427989205871858.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/index-7-6903427989205871858.wt" afterPath="$PROJECT_DIR$/db/index-7-6903427989205871858.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/index-8-6903427989205871858.wt" afterPath="$PROJECT_DIR$/db/index-8-6903427989205871858.wt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/sizeStorer.wt" afterPath="$PROJECT_DIR$/db/sizeStorer.wt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/WiredTiger" afterPath="$PROJECT_DIR$/db/WiredTiger" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/WiredTiger.lock" afterPath="$PROJECT_DIR$/db/WiredTiger.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/WiredTiger.turtle" afterPath="$PROJECT_DIR$/db/WiredTiger.turtle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/mongod.lock" afterPath="$PROJECT_DIR$/db/mongod.lock" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -297,12 +285,20 @@
       <workItem from="1517129748852" duration="1005000" />
       <workItem from="1517131203429" duration="8780000" />
       <workItem from="1517226134877" duration="11803000" />
-      <workItem from="1517276226476" duration="799000" />
+      <workItem from="1517276226476" duration="843000" />
     </task>
+    <task id="LOCAL-00001" summary="数据库问题">
+      <created>1517277053100</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1517277053100</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25975000" />
+    <option name="totallyTimeSpent" value="26019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
