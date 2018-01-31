@@ -4,7 +4,7 @@ layui.use(['table','form'], function(){
     var form = layui.form;
 
     //第一个实例
-    table.render({
+    var categoryTable = table.render({
         elem: '#categoryList'
         ,height: 600
         ,url: '/admin/category/list' //数据接口
@@ -47,6 +47,16 @@ layui.use(['table','form'], function(){
                 title: '分类信息编辑',
                 content: '/admin/category/edit?_id=' + _id
             });
+        }else if(layEvent === 'detail'){
+            layer.open({
+                type: 2,
+                area: ['400px', '300px'],
+                fix: false,
+                resize: false,
+                shade: 0.4,
+                title: '分类信息编辑',
+                content: '/admin/category/detail?_id=' + _id
+            });
         }
     });
 
@@ -61,6 +71,15 @@ layui.use(['table','form'], function(){
             content: '/admin/category/add'
         });
         return false
+    });
+
+    //监听提交
+    form.on('submit(searchCategory)', function(data) {
+        categoryTable.reload({
+            url: '/admin/category/find',
+            where: data.field
+        });
+        return false;
     });
 
 });

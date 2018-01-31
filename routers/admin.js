@@ -66,14 +66,13 @@ router.get('/user/list',function(req,res){
 });
 
 /**
- * 用户列表
+ * 用户名称模糊查询
  */
 router.get('/user/find',function(req,res){
     /**
      *读取用户表
      */
     var username = req.query.username;
-    console.log(username);
     User.count().then(function (count) {
         User.find({username:{$regex:username}}).then(function (users) {
             res.json({
@@ -122,7 +121,7 @@ router.get('/category/list',function(req,res){
 
 
 /**
- * 添加分类页面
+ * 添加分类页面跳转
  */
 router.get('/category/add',function (req,res) {
     res.render('admin/addCategory',{
@@ -131,7 +130,7 @@ router.get('/category/add',function (req,res) {
 });
 
 /**
- * 添加分类
+ * 添加分类post方法
  */
 router.post('/category/add',function(req,res){
     /**
@@ -187,6 +186,22 @@ router.get('/category/delete',function (req,res) {
 });
 
 /**
+ * 分类详情页面跳转
+ */
+router.get('/category/detail',function (req,res) {
+    var _id = req.query._id;
+    console.log(_id);
+    Category.findById(_id).then(function (category) {
+        if(category){
+            res.render('admin/detailCategory',{
+                userInfo:req.userInfo,
+                category:category
+            })
+        }
+    });
+});
+
+/**
  * 修改分类页面跳转
  */
 router.get('/category/edit',function (req,res) {
@@ -203,7 +218,7 @@ router.get('/category/edit',function (req,res) {
 });
 
 /**
- * 修改分类页面跳转
+ * 修改分类post方法
  */
 router.post('/category/edit',function (req,res) {
     var _id = req.body._id;
@@ -219,4 +234,24 @@ router.post('/category/edit',function (req,res) {
     });
 });
 
+
+/**
+ * 分类名称模糊查询
+ */
+router.get('/category/find',function(req,res){
+    /**
+     *读取分类表
+     */
+    var name = req.query.name;
+    Category.count().then(function (count) {
+        Category.find({name:{$regex:name}}).then(function (categories) {
+            res.json({
+                code:0,
+                count:count,
+                data:categories,
+                message:""
+            });
+        });
+    });
+});
 module.exports=router;
