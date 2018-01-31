@@ -2,17 +2,34 @@
 
 {% block main %}
 <link rel="stylesheet" href="../../public/css/admin/userIndex.css">
+<div style="padding: 10px 20px;">
+    <span class="layui-breadcrumb">
+      <a href="/admin">管理首页</a>
+      <a><cite>用户列表</cite></a>
+    </span>
+    <form class="layui-form x-left layui-elem-quote" action="" style="padding:10px 15px;margin-bottom: 0;height: 38px;">
+        <div class="layui-form-pane">
+            <div class="layui-form-item">
+                <div class="layui-input-inline" style="width:140px">
+                    <input type="text" name="username" lay-verify="name" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                </div>
 
-<span class="layui-breadcrumb">
-  <a href="/admin">管理首页</a>
-  <a><cite>用户列表</cite></a>
-</span>
-<table id="userList" lay-filter="test"></table>
-<script type="text/html" id="toolBar">
-    <a class="layui-btn layui-btn-sm" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
-</script>
+                <div class="layui-input-inline">
+                    <button class="layui-btn btn-blue" lay-submit="" lay-filter="searchUser"><i class="layui-icon">&#xe615;</i>查询</button>
+                </div>
+                <!--<button class="layui-btn x-right btn-orange" lay-submit="" lay-filter="btn-alladd" style="margin-left:10px;"><i class="layui-icon">&#xe681;</i>批量导入</button>
+                <button class="layui-btn x-right btn-lightblue" lay-submit="" lay-filter="btn-add"><i class="layui-icon">&#xe61f;</i>增加</button>-->
+            </div>
+        </div>
+    </form>
+    <table id="userList" lay-filter="test" style="margin:10px 15px;"></table>
+    <script type="text/html" id="toolBar">
+        <a class="layui-btn layui-btn-mini" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+    </script>
+</div>
+
 {%endblock%}
 {% block js %}
 <script src="/public/js/admin/userIndex.js"></script>

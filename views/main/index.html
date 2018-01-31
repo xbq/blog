@@ -5,10 +5,8 @@
     <title>活出你的精彩</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link href="../../public/css/index.css" rel="stylesheet" type="text/css" />
-    <script src="../../public/js/jquery.min.js"></script>
-    <script src="../../public/js/index.js"></script>
-
+    <link rel="stylesheet" href="/public/plugins/layui/css/layui.css">
+    <link href="/public/css/main/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -26,8 +24,8 @@
 
         <div id="newsletter_box">
             <form action="#" method="get">
-                <input type="text" id="user" name="user" class="newsletter_email" value="Enter your email address"  onfocus="clearText(this)" onblur="clearText(this)" />
-                <input style="font-weight: bold;" type="submit" name="submit" id="submit" value="" />
+                <input type="text" id="searchText" name="searchText" class="newsletter_email" value="输入关键字"  onfocus="clearText(this)" onblur="clearText(this)" />
+                <input style="font-weight: bold;" type="submit" name="submit" id="submit" value="搜索" />
             </form>
         </div>
 
@@ -136,72 +134,82 @@
         <div class="sidebar_box" id="welcomeBox">
             <h3>欢迎光临</h3>
             <div class="sb_content">
-                <p><span name="username">{{userInfo.username}}</span></p>
+                <p><span name="username" style="font-size: 18px">{{userInfo.username}}</span></p>
                 {% if userInfo.isAdmin%}
-                <span>你好，管理员！</span>
-                <a href="/admin">进入后台</a>
+                <span style="display: inline-block;height: 40px;line-height: 40px">你好，管理员！</span>
+                <a href="/admin" style="color: tomato;font-weight: normal">进入后台>></a>
                 {% else %}
-                <span>你好，欢迎光临我的博客！</span>
+                <span style="display: inline-block;height: 40px;line-height: 40px">你好，欢迎光临我的博客！</span>
                 {% endif %}
 
-
-                <br>
-                <input type="button" value="退出" id="btn_logout">
+                <div style="width: 216px; margin: 0;">
+                    <button id="btn_logout" class="layui-btn layui-btn-fluid">安全退出</button>
+                </div>
             </div>
         </div>
-{%else%}
-        <div class="sidebar_box"  id="registerBox">
-            <h3>注册</h3>
-            <div class="sb_content">
-                <div>
-                    <label>用 户 名：</label>
-                    <input type="text" name="username">
-                </div>
-                <div>
-                    <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
-                    <input type="password" name="password">
-                </div>
-                <div>
-                    <label>密码确认：</label>
-                    <input type="password" name="repassword">
-                </div>
-                <div>
-                    <input type="button" value="注册" id="btn_register">
-                </div>
-                <div>
-                    <span class="message"></span>
-                </div>
-                <div>
-                    <a href="javascript:;">已有账号</a> ？ <a href="javascript:;" id="linkLogin">直接登录</a>
-                </div>
+        {%else%}
 
-            </div>
-        </div>
 
-        <div class="sidebar_box" id="loginBox">
+
+        <div class="sidebar_box"  id="loginBox">
             <h3>登录</h3>
             <div class="sb_content">
-                <div>
-                    <label>用 户 名：</label>
-                    <input type="text" name="username">
-                </div>
-                <div>
-                    <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
-                    <input type="password" name="password">
-                </div>
-                <div>
-                    <input type="button" value="登录" id="btn_login">
-                </div>
-                <div>
-                    <span class="message"></span>
-                </div>
-                <div>
-                    <a href="javascript:;" id="forgetPsw">没有账号</a> ？ <a href="javascript:;" id="linkRegiter">立即注册</a>
-                </div>
+                <form  class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="text" id="username" name="username"  autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="password" id="password" name="password"  autocomplete="off" placeholder="请输入密码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="margin-bottom: 0;">
+                        <div class="layui-input-block" style="margin-bottom: 10px;">
+                            <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="login">登  录</button>
+                        </div>
+                        <span style="color: #808080;text-decoration: none;">还没有账号？</span>
+                        <a id="linkRegiter" href="javascript:;" style="color: #eb7350;font-weight: normal">立即注册</a>
+                    </div>
+                </form>
+
             </div>
         </div>
 
-{% endif %}
+
+        <div class="sidebar_box" id="registerBox">
+            <h3>注册</h3>
+            <div class="sb_content">
+                <form  class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="text" name="username"  autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="password" name="password"  autocomplete="off" placeholder="请输入密码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="password" name="repassword"  autocomplete="off" placeholder="请再次输入密码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="margin-bottom: 0;">
+                        <div class="layui-input-block" style="margin-bottom: 10px;">
+                            <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="register">注  册</button>
+                        </div>
+                        <span style="color: #808080;text-decoration: none;">已有账号？</span>
+                        <a id="linkLogin" href="javascript:;" style="color: #1E9FFF;font-weight: normal">马上登录</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        {% endif %}
 
         <div class="sidebar_box">
             <h3>Categories</h3>
@@ -246,6 +254,10 @@
     </div>
 
     <div class="cleaner"></div>
+    <ul class="layui-fixbar">
+        <li class="layui-icon" lay-type="bar1" style="display: none"></li>
+        <li class="layui-icon layui-fixbar-top" lay-type="top" style="display: list-item;"  title="回到顶部" id="gotop" onclick="pageScroll()"></li>
+    </ul>
 </div> <!-- end of main -->
 
 <div id="templatmeo_bottom">
@@ -287,6 +299,7 @@
     Validate <a href="http://validator.w3.org/check?uri=referer">XHTML</a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
 
 </div>
-
+<script src="/public/plugins/layui/layui.all.js"></script>
+<script src="/public/js/main/index.js"></script>
 </body>
 </html>

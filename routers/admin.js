@@ -66,6 +66,29 @@ router.get('/user/list',function(req,res){
 });
 
 /**
+ * 用户列表
+ */
+router.get('/user/find',function(req,res){
+    /**
+     *读取用户表
+     */
+    var username = req.query.username;
+    console.log(username);
+    User.count().then(function (count) {
+        User.find({username:{$regex:username}}).then(function (users) {
+            res.json({
+                code:0,
+                count:count,
+                data:users,
+                message:""
+            });
+        });
+    });
+
+});
+
+
+/**
  * 分类管理
  */
 router.get('/category',function (req,res) {
@@ -143,6 +166,57 @@ router.post('/category/add',function(req,res){
         });
     }
 
+});
+
+/**
+ * 删除分类
+ */
+router.get('/category/delete',function (req,res) {
+    var _id = req.query._id;
+
+    Category.findByIdAndRemove(_id).then(function (category) {
+        if(category){
+            responseData.message="删除成功";
+            res.json(responseData);
+        }else{
+            responseData.code=2;
+            responseData.message="删除失败";
+            res.json(responseData);
+        }
+    });
+});
+
+/**
+ * 修改分类页面跳转
+ */
+router.get('/category/edit',function (req,res) {
+    var _id = req.query._id;
+    console.log(_id);
+    Category.findById(_id).then(function (category) {
+        if(category){
+            res.render('admin/editCategory',{
+                userInfo:req.userInfo,
+                category:category
+            })
+        }
+    });
+});
+
+/**
+ * 修改分类页面跳转
+ */
+router.post('/category/edit',function (req,res) {
+    var _id = req.body._id;
+    var name = req.body.name;
+    console.log(_id);
+    Category.findById(_id).then(function (category) {
+        if(category){
+            res.render('admin/editCategory',{
+                userInfo:req.userInfo,
+                category:category
+            })
+        }
+    });
 });
 
 module.exports=router;

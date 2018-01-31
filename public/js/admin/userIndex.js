@@ -1,8 +1,9 @@
-layui.use('table', function(){
+layui.use(['table','form'], function(){
     var table = layui.table;
+    var form = layui.form;
 
     //第一个实例
-    table.render({
+    var userTable = table.render({
         elem: '#userList'
         ,height: 600
         ,url: '/admin/user/list' //数据接口
@@ -18,6 +19,12 @@ layui.use('table', function(){
         limit:20
     });
 
-
-
+    //监听提交
+    form.on('submit(searchUser)', function(data) {
+        userTable.reload({
+            url: '/admin/user/find',
+            where: data.field
+        });
+        return false;
+    });
 });

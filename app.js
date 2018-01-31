@@ -40,7 +40,7 @@ app.use(function(req,res,next){
 ;});
 app.use('/admin', require('./routers/admin'));
 app.use('/api', require('./routers/api'));
-app.use('/main', require('./routers/main'));
+app.use('/', require('./routers/main'));
 
 //连接数据库
 mongoose.connect('mongodb://localhost:27017/blog',function(err){

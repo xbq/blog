@@ -74,12 +74,19 @@ router.post('/user/login',function (req,res,next) {
     if(req&&req.body){
         var username = req.body.username;
         var password = req.body.password;
-        if(username==""||password==""){
-            responseData.code=6;
-            responseData.message = "用户名和密码不能为空";
+        if(username==""){
+            responseData.code=1;
+            responseData.message = "用户名不能为空";
             res.json(responseData);
             return;
         }
+        if(password==""){
+            responseData.code=2;
+            responseData.message = "密码不能为空";
+            res.json(responseData);
+            return;
+        }
+
 
         //查询数据库，验证用户名密码是否正确
         User.findOne({
@@ -87,7 +94,7 @@ router.post('/user/login',function (req,res,next) {
             password:password
         }).then(function(userInfo){
             if(!userInfo){
-                responseData.code=7;
+                responseData.code=3;
                 responseData.message= "用户名或密码错误";
                 res.json(responseData);
                 return;
