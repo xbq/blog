@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var Category = require('../models/Category');
+var Archive = require('../models/archive');
 
 //统一返回格式
 var responseData = {};
@@ -254,4 +255,63 @@ router.get('/category/find',function(req,res){
         });
     });
 });
+
+
+/**
+ * 文章管理
+ */
+router.get('/archive',function (req,res) {
+    /**
+     *读取文章表
+     * 首次默认limit为10，这个跟前端的页面的分页控件的默认limit保持一致
+     */
+    var page = req.query.page||1;
+    var limit =Number(req.query.limit)||10;
+    var skip = (page-1)*limit;
+    Archive.count().then(function (count) {
+        Archive.find().skip(skip).limit(limit).populate('category').then(function (archives) {
+            console.log(archives);
+            res.render('admin/archive',{
+                userInfo:req.userInfo,
+                archives:archives,
+                count:count
+            })
+        });
+    });
+});
+
+router.get('/archive/add',function (req,res) {
+    /**
+     *读取用户表
+     */
+    Category.find().then(function (categories) {
+        res.render('admin/addArchive',{
+            userInfo:req.userInfo,
+            categories:categories
+        })
+    });
+});
+
+/**
+ * 添加文章
+ */
+router.post('/archive/add',function (req,res) {
+    var reqBody = req.body;
+    var title = reqBody.title;
+    var content = reqBody.content;
+    var description = reqBody.description;
+    var category = reqBody.category;
+    new Archive({
+        title:title,
+        content:content,
+        description:description,
+        category:category
+    }).save().then(function (newArchive) {
+        if(newArchive){
+            responseData.message = "添加成功"
+            res.json(responseData);
+        }
+    });
+});
+
 module.exports=router;

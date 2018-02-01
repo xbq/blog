@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<link rel="stylesheet" href="/public/css/admin/archive.css">
+<div style="padding: 10px 20px;">
+    <span class="layui-breadcrumb">
+  <a href="/admin">管理首页</a>
+  <a><cite>文章列表</cite></a>
+</span>
+    <form class="layui-form x-left layui-elem-quote" action="" style="padding:10px 15px;margin-bottom: 0;height: 38px;">
+        <div class="layui-form-pane">
+            <div class="layui-form-item">
+                <div class="layui-input-inline" style="width:140px">
+                    <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入类别名称" class="layui-input">
+                </div>
+
+                <div class="layui-input-inline">
+                    <button class="layui-btn btn-blue" lay-submit="" lay-filter="searchArchive"><i class="layui-icon">&#xe615;</i>查询</button>
+                </div>
+                <a class="layui-btn btn-lightblue" style="float: right;" href="/admin/archive/add"><i class="layui-icon">&#xe61f;</i>增加</a>
+            </div>
+        </div>
+    </form>
+    {%for archive in archives %}
+    <div class="post_box">
+        <div class="header">
+            <h2><a href="#">{{archive.title}}</a></h2>
+            <div class="tag"><strong>Tags:</strong> <a href="#">{{archive.category.name}}</a>
+                <span class="posted_date">
+                        25 Feb
+                        <strong>2010</strong>
+                    </span>
+            </div>
+            <div class="pb_right">
+                <p>{{archive.content}}</p>
+                <div class="comment"><a href="#">Comment</a></div>
+            </div>
+            <div class="cleaner"></div>
+        </div>
+    </div>
+    {%endfor%}
+    <input type="hidden" value="{{count}}" id="count">
+    <div id="page"></div>
+</div>
+
+{%endblock%}
+{% block js %}
+<script src="/public/js/admin/archive.js"></script>
+{% endblock %}

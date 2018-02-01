@@ -22,3 +22,9 @@ layui.use('form',function(){
         });
     });
 });
+
+/*关闭弹出框口的父窗口*/
+function closeParentLayer(){
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);
+}
